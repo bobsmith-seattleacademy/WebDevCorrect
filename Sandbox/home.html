@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<script>
+import 'owl.carousel/dist/assets/owl.carousel.css';
+import 'owl.carousel';
+</script>
+
+<head>
+  <title>Fricky/Wacky</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="icon" type="image/ico" href="tabImage.jpg" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+  <style>
+    /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+    .row.content {height: 550px}
+    
+    /* Set gray background color and 100% height */
+    .sidenav {
+      background-color: #f1f1f1;
+      height: 100%;
+    }
+        
+    /* On small screens, set height to 'auto' for the grid */
+    @media screen and (max-width: 767px) {
+      .row.content {height: auto;} 
+    }
+
+
+    .jumbotron { 
+  background-color: #f4511e; /* Orange */
+  color: #ffffff;}
+
+  	.alsojumbotron{
+  		background-color: #lightblue; /* Orange */
+  color: #ffffff;}
+  	}
+
+  	a {
+          display: block;
+          padding: 24px 15px;
+          &:hover {
+            background-color: rgba(#fff, .18);
+          }
+        }
+  
+
+  </style>
+
+</head>
+
+
+<body>
+  <div class="jumbotron text-center">
+  <h1>Fricky/Wacky</h1> 
+  <p>I am going sicko mode</p> 
+  <form  class="form-inline" action="action.php" method="post">
+    
+      <input type="text" class="form-control" size="50" placeholder="Feedback" name="field1" value:"">
+      
+      <input type="submit" value="Submit" name="submit" size="20">
+      
+    
+  </form>
+</div>
+
+
+
+
+
+
+
+
+<div class="container-fluid">
+  <div class="row content">
+    <div class="col-sm-3 sidenav hidden-xs">
+      <h2>Navigation</h2>
+      <ul class="nav nav-pills nav-stacked">
+      	<li><a href="../htmlTutorial/index.html">Index</a></li>
+        <li><a href="#section1">Statistics</a></li>
+        <li><a href="#section2">Age</a></li>
+        <li><a href="#section3">Gender</a></li>
+      </ul><br>
+    </div>
+    <br>
+    
+    <div class="col-sm-9" id="section1">
+      <div class="well">
+      	<a href="https://www.youtube.com/channel/UCigBAHL9txC6a555FfRoVSg" class="btn btn-danger" role="button" >YouTube</a>
+        <a href="https://steamcommunity.com/id/ItsLusio" class="btn btn-primary" role="button" >Steam</a>
+
+      </div>
+      <div class="row">
+        <div class="col-sm-3">
+          <div class="well">
+            <h4>Subscribers</h4>
+            <p id="subscribers">0</p>
+          </div>
+        </div>
+        <div class="col-sm-3">
+          <div class="well">
+            <h4>Videos</h4>
+            <p>2</p> 
+          </div>
+        </div>
+        <div class="col-sm-3">
+          <div class="well">
+            <h4><a href="https://www.youtube.com/watch?v=asOGBZsxbbw">Views "HIGHLIGHT CLIP"</a></h4>
+            <p id="views">0</p> 
+          </div>
+        </div>
+        <div class="col-sm-3">
+          <div class="well">
+            <h4><a href="https://www.youtube.com/watch?v=dWr3F98Icao">Views "Csgo_Clip_1"</a></h4>
+            <p id="views2">0</p> 
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="well">
+            <h4>Ficky/Wacky's youtube + other statistics page.</h4> 
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  <div class="jumbotron text-center" id="section2">
+  <h1>My Current Age</h1>
+
+  
+    
+    <p id="clock"></p>
+</div>
+</div>
+
+<div class="jumbotron text-center" id="section3">
+  <h1>Male</h1>
+
+  
+    
+
+</div>
+
+
+
+<div style="padding-top: 1000px">
+</div>
+
+
+</body>
+
+
+
+
+<script>
+
+  $.getJSON('https://www.googleapis.com/youtube/v3/videos?part=statistics&id=asOGBZsxbbw&t&key=AIzaSyB_VBqVUmTU-KwXm5Paur9abiEIb6yyA-0', function(data) {
+    document.getElementById("views").innerHTML = data.items[0].statistics.viewCount;
+  });
+  $.getJSON('https://www.googleapis.com/youtube/v3/videos?part=statistics&id=dWr3F98Icao&t&key=AIzaSyB_VBqVUmTU-KwXm5Paur9abiEIb6yyA-0', function(data) {
+    document.getElementById("views2").innerHTML = data.items[0].statistics.viewCount;
+  });
+  $.getJSON('https://www.googleapis.com/youtube/v3/channels?part=statistics&id=UCigBAHL9txC6a555FfRoVSg&fields=items/statistics/subscriberCount&key=AIzaSyB_VBqVUmTU-KwXm5Paur9abiEIb6yyA-0', function(data) {
+    document.getElementById("subscribers").innerHTML = data.items[0].statistics.subscriberCount;
+  });
+
+</script>
+
+
+
+
+
+
+
+
+<script>
+
+
+function newTime() {
+  var t =  new Date();
+  var y = t.getYear();
+  var m = t.getMonth();
+  var d = t.getDay();
+  var h = t.getHours();
+  var mi = t.getMinutes();
+  var s = t.getSeconds();
+  var ms = t.getMilliseconds();
+  var y2 = y;
+  m = m + 1;
+
+  if(d>=27 && m>=6)
+  {
+  	y = y - 103;
+  }
+  else if(d<27 && m<6)
+  {
+  	y = y - 104;
+  }
+  
+ //  d = d + 10;
+
+ // FIX ME
+ //  if(d > 31 && m == 1 || d > 31 && m == 3 || d > 31 && m == 5 || d > 31 && m == 7 || d > 31 && m == 8 || d > 31 && m == 10 ||  d > 31 && m == 12 ||)
+ //  {
+ //  	d = d - 31;
+ //  }
+
+ // if(d > 30 && m == 4 || d > 30 && m == 6 || d > 30 && m == 9 || d > 30 && m == 11)
+ //  {
+ //  	d = d - 30;
+ //  }
+
+ // if(d > 29 && m == 2 && y2+1900%4 === 0 && y2+1900%100 === 0 && !y2+1900%400 === 0)
+ //  {
+ //  	d = d - 29;
+ //  }
+ //  if(d > 28 && m == 2 && !y2+1900%4 === 0 && !y2+1900%100 === 0 && y2+1900%400 === 0)
+ //  {
+ //  	d = d - 28;
+ //  }
+ 
+
+  m = m + 6;
+
+  if(m > 12)
+  {
+  	m = m - 12;
+  }
+
+
+
+  
+
+  
+
+
+
+  if(ms < 100)
+  {
+  	ms = "0"+ms;
+  } 
+  if(ms < 10)
+  {
+  	ms = "0"+ms;
+  }
+
+  
+  
+  document.getElementById("clock").innerHTML =  y+" Years "+m+" Months "+d+" Days "+h+" Hours "+mi+" Minutes "+s+ " Seconds "+ms+" Milliseconds ";
+
+  }
+
+  window.onload = setInterval(newTime,10);
+</script>
+
+
+</html>
